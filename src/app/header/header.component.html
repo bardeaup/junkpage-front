@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light height-100px">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Junkpage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/journal" routerLinkActive="active">Le Journal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/musique" routerLinkActive="active" >Musique</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Expositions</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <span class="example-spacer"></span>
+  <div class="border-right">
+    <button mat-icon-button>
+      <mat-icon>settings_suggest</mat-icon>
+    </button>
+  </div>
+  <div class="input-group w-25">
+    <input type="text" class="form-control" placeholder="Artistes, salles ...">
+    <div class="input-group-append">
+      <button mat-icon-button aria-label="Example icon-button with menu icon">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+
+
+</nav>
