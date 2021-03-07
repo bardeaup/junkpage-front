@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light height-100px">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark height-100px">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Junkpage</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -11,7 +11,7 @@
           <a class="nav-link" routerLink="/journal" routerLinkActive="active">Le Journal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/musique" routerLinkActive="active" >Musique</a>
+          <a class="nav-link" routerLink="/musique" routerLinkActive="active">Musique</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Expositions</a>
@@ -22,7 +22,9 @@
   <span class="example-spacer"></span>
   <div class="border-right">
     <button mat-icon-button>
-      <mat-icon>settings_suggest</mat-icon>
+      <a class="nav-link" routerLink="/edit-articles" routerLinkActive="active">
+        <mat-icon>settings_suggest</mat-icon>
+      </a>
     </button>
   </div>
   <div class="input-group w-25">
@@ -33,6 +35,4 @@
       </button>
     </div>
   </div>
-
-
 </nav>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JournalService } from '../service/journal.service';
 
 @Component({
   selector: 'app-journal',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./journal.component.css']
 })
 export class JournalComponent implements OnInit {
-
-  constructor() { }
+  
+  di: string;
+  constructor(private journalService: JournalService) { }
 
   ngOnInit(): void {
-    
+    this.journalService.getJournalArticles().subscribe(
+      x => console.log('Test appel WS : ', x.username)
+    )
   }
 
 }

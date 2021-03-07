@@ -17,6 +17,8 @@ import { JournalComponent } from './journal/journal.component';
 import { MusiqueComponent } from './musique/musique.component';
 import { AuthService } from './service/auth.service';
 import { AuthInterceptor } from './service/auth.interceptor';
+import { ArticlesEditorComponent } from './admin/articles-editor/articles-editor.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -25,11 +27,12 @@ import { AuthInterceptor } from './service/auth.interceptor';
     HeaderComponent,
     LoginComponent,
     JournalComponent,
-    MusiqueComponent
+    MusiqueComponent,
+    ArticlesEditorComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -38,9 +41,13 @@ import { AuthInterceptor } from './service/auth.interceptor';
     MatIconModule,
     MatButtonModule,
     MatButtonToggleModule,
-    NgbModule
+    NgbModule,
+    CKEditorModule
   ],
-  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [
+    AuthService, 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
