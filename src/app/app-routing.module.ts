@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticlesEditorComponent } from './admin/articles-editor/articles-editor.component';
+import { JournalEditorComponent } from './admin/journal-editor/journal-editor.component';
+import { ArticleEditorComponent } from './admin/article-editor/article-editor.component';
 import { JournalComponent } from './journal/journal.component';
 import { LoginComponent } from './login/login.component';
 import { MusiqueComponent } from './musique/musique.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   {path: 'junkadminpage', component: LoginComponent},
   {path: 'journal', component: JournalComponent},
   {path: 'musique', component: MusiqueComponent},
-  {path: 'edit-articles', component: ArticlesEditorComponent}
+  {path: 'edit-journal', component: JournalEditorComponent},
+  {path: 'edit-article/:id', component: ArticleEditorComponent}
 
 ];
 

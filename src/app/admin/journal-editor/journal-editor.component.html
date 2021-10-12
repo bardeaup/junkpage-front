@@ -1,0 +1,147 @@
+<div class="container-global">
+    <div class="form-container">
+        <h1 class="mb-4">Formulaire d'édition du journal</h1>
+        <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col">
+                    <h2>Modifier une édition existante</h2>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let journalEditionAnnuel of journalEditionHistorique">
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{ journalEditionAnnuel.annee }}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              {{journalEditionAnnuel.journalEditions.length}} éditions
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div *ngFor="let edition of journalEditionAnnuel.journalEditions" class="accordion-content">
+                              <a routerLink="/edit-article/{{edition.id}}">{{edition.mois | titlecase}}&nbsp;{{edition.annee}}&nbsp;{{edition.titre}}</a>
+                              </div>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                </div>
+                <form class="col border-left-separator p-2" [formGroup]="journalEditionForm" (ngSubmit)="onSubmit()">
+                    <h2>Créer une nouvelle édition</h2>
+                    <div class="mb-2">
+                        <label class="form-label">Titre</label>
+                        <input type="text" class="form-control" formControlName="titre"
+                            placeholder="Titre">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Mois *</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="mois">
+                            <option *ngFor="let month of monthsList;let indexOfelement=index;" [value]="indexOfelement" required>{{month}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Année *</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="annee">
+                            <option *ngFor="let annee of years" [value]="annee" required> {{annee}} </option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Numéro d'édition *</label>
+                        <input type="number" class="form-control" formControlName="numeroEdition"
+                            placeholder="Numéro d'édition" required>
+                    </div>
+                    <button type="submit" [disabled]="!journalEditionForm.valid" class="btn btn-success me-2">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <form [formGroup]="journalForm">
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Mois</label>
+                <select class="form-select" aria-label="Default select example" formControlName="mois">
+                    <option *ngFor="let month of monthsList" [value]="month" required>{{month}}</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Année</label>
+                <select class="form-select" aria-label="Default select example" formControlName="annee">
+                    <option *ngFor="let annee of years" [value]="annee" required> {{annee}} </option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Numéro d'édition</label>
+                <input type="number" class="form-control" formControlName="numeroEdition" placeholder="Numéro d'édition"
+                    required>
+            </div>
+            <mat-form-field appearance="fill" class="col">
+                <mat-label>Toppings</mat-label>
+                <mat-select [formControl]="toppings" multiple>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <hr class="dashed">
+         Formulaire de création d'articles 
+        <h1>Les rubriques</h1>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col ">
+                <div class="card full-height-card bg-white">
+                    <button class="margin-auto" mat-stroked-button data-bs-toggle="modal" (click)="openRubriqueModal()">Ajouter une rubrique</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Théâtre
+                    </div>
+                    <ul class="list-group list-group-flush articles-list-height">
+                        <li class="list-group-item list-group-item-action">An item</li>
+                        <li class="list-group-item list-group-item-action">A second item</li>
+                        <li class="list-group-item list-group-item-action">A third item</li>
+                    </ul>
+                    <button mat-button aria-label="Ajouter un article">
+                        <mat-icon>playlist_add</mat-icon>
+                        <span> Ajouter un article</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Sport (4 articles)
+                    </div>
+                    <ul class="list-group list-group-flush articles-list-height">
+                        <li class="list-group-item list-group-item-action">Le surf sur la côte landaise</li>
+                        <li class="list-group-item list-group-item-action">Claire Gariteai affronte les rouleaux
+                            d'Ericeira</li>
+                        <li class="list-group-item list-group-item-action">Concours de bilboquet alcoolisé dans l'arène
+                            de Dax</li>
+                        <li class="list-group-item list-group-item-action">Interview avec le champion du monde de lancé
+                            de pignes</li>
+                        <li class="list-group-item list-group-item-action">hjg</li>
+                        <li class="list-group-item list-group-item-action">kjg</li>
+                        <li class="list-group-item list-group-item-action">oh</li>
+                    </ul>
+                    <button mat-button aria-label="Ajouter un article">
+                        <mat-icon>playlist_add</mat-icon>
+                        <span> Ajouter un article</span>
+                    </button>
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Théâtre (3 articles)
+                    </div>
+                    <ul class="list-group list-group-flush articles-list-height">
+                        <a href="#" class="list-group-item list-group-item-action">An item</a>
+                        <a href="#" class="list-group-item list-group-item-action">A second item</a>
+                        <a href="#" class="list-group-item list-group-item-action">A third item</a>
+                    </ul>
+                    <button mat-button aria-label="Ajouter un article">
+                        <mat-icon>playlist_add</mat-icon>
+                        <span> Ajouter un article</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </form> -->
+</div>

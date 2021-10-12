@@ -1,0 +1,135 @@
+<div class="container-global">
+  <div class="form-container">
+    <div class="d-flex subheader pt-2">
+      <button mat-icon-button matTooltip="Retour" routerLink="/edit-journal" class="ms-2">
+        <mat-icon>
+          arrow_back
+        </mat-icon>
+      </button>
+      <h1 class="pt-1 ms-2">Formulaire d'édition d'articles</h1>
+    </div>
+    <div class="container-fluid h-100 p-3">
+      <div class="row justify-content-center h-100">
+        <div class="col">
+          <h2>Articles de l'édition de {{actualJournalEdition.mois | titlecase}} {{actualJournalEdition.annee}}</h2>
+
+        </div>
+        <form class="col border-left-separator">
+          <h2>Créer un nouvel article</h2>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">Catégorie</label>
+              <select class="form-select" aria-label="Default select example">
+                <option value="Fête de la citrouille">Fête de la citrouille</option>
+                <option value="Danse">Danse</option>
+                <option value="Musique">Musique</option>
+                <option value="Cirque">Cirque</option>
+              </select>
+            </div>
+
+            <!-- TODO : Articles :
+                                      ajouter Copyright et libellé desccriptif de l'image-->
+            <div class="col mb-3">
+              <label class="form-label">Rédacteur</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <hr class="separateur">
+          <div class="col mb-3">
+            <label class="form-label">Image prinicipale</label>
+            <div class="input-group">
+              <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputFile"
+                aria-label="Upload">
+              <button class="btn btn-outline-secondary" type="button" id="inputFile">Supprimer</button>
+            </div>
+          </div>
+          <hr class="separateur">
+
+          <div class="mb-3">
+            <label class="form-label">Titre du chapeau</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Contenu du chapeau</label>
+            <textarea type="text" class="form-control" rows="3"></textarea>
+          </div>
+          <hr class="separateur">
+
+          <div class="mb-3">
+            <label class="form-label">Titre de l'article</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Contenu de l'article</label>
+            <ckeditor class="mb-3" [config]="config" [editor]="Editor" data="<p>Hello, world!</p>">
+            </ckeditor>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div >
+      <h4>{{actualJournalEdition.titre}}</h4>
+    </div>
+    <div>
+      <div class="row">
+      <div class="col">
+        <label class="form-label">Catégorie</label>
+        <select class="form-select" aria-label="Default select example">
+          <option value="Fête de la citrouille">Fête de la citrouille</option>
+          <option value="Danse">Danse</option>
+          <option value="Musique">Musique</option>
+          <option value="Cirque">Cirque</option>
+        </select>
+      </div>
+
+      <!-- TODO : Articles :
+                        ajouter Copyright et libellé desccriptif de l'image-->
+<!-- <div class="col mb-3">
+        <label class="form-label">Rédacteur</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <hr class="separateur">
+      <div class="col mb-3">
+        <label class="form-label">Image prinicipale</label>
+        <div class="input-group">
+          <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputFile"
+            aria-label="Upload">
+          <button class="btn btn-outline-secondary" type="button" id="inputFile">Supprimer</button>
+        </div>
+      </div>
+      <hr class="separateur">
+
+      <div class="mb-3">
+        <label class="form-label">Titre du chapeau</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contenu du chapeau</label>
+        <textarea type="text" class="form-control" rows="3"></textarea>
+      </div>
+      <hr class="separateur">
+
+      <div class="mb-3">
+        <label class="form-label">Titre de l'article</label>
+        <input type="email" class="form-control" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contenu de l'article</label>
+        <ckeditor class="mb-3" [config]="config" [editor]="Editor" data="<p>Hello, world!</p>">
+        </ckeditor>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-success" (click)="save()">Enregistrer</button>
+    </div>
+ -->

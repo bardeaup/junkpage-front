@@ -1,0 +1,29 @@
+.separateur {
+    border: 0;
+    border-top: 1px solid #9DDAC6;
+  }
+/* .content-background {
+    background-color: #C2FFD9;
+}
+.header-footer-background {
+    background-color: #9DDAC6
+} */
+.container-global {
+    background-color: #8eaebd;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+  }
+
+  .subheader{
+    background-color: #d7ecf5;
+  }
+  .form-container {
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    min-height: calc(100vh - 130px);
+  }
+  
+  .border-left-separator {
+    border-left: 6px solid rgb(179, 29, 24);
+  }

@@ -1,0 +1,54 @@
+.container-global {
+  background-color: #8eaebd;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+}
+
+.form-container {
+  width: 90%;
+  margin: auto;
+  padding: 15px;
+  background-color: white;
+  min-height: calc(100vh - 130px);
+}
+
+.border-left-separator {
+  border-left: 6px solid rgb(179, 29, 24);
+}
+
+.max-w {
+  max-width: 75px;
+}
+
+.categorie-card {
+  width: 250px;
+}
+
+.articles-list-height {
+  height: 148px;
+  overflow-y: auto;
+}
+
+.full-height-card {
+  height: 100%;
+  background-color: transparent;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.accordion-content:nth-child(n) {
+  padding: 5px;
+  
+}
+.accordion-content:nth-child(n):hover {
+  background-color: #d4d1d1;
+}
+.accordion-content:nth-child(odd) {
+  background-color: #f4f4f4;
+}

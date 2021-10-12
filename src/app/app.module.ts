@@ -11,15 +11,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { JournalComponent } from './journal/journal.component';
 import { MusiqueComponent } from './musique/musique.component';
 import { AuthService } from './service/auth.service';
 import { AuthInterceptor } from './service/auth.interceptor';
-import { ArticlesEditorComponent } from './admin/articles-editor/articles-editor.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
+import { ArticleEditorComponent } from './admin/article-editor/article-editor.component';
+import { JournalEditorComponent } from './admin/journal-editor/journal-editor.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     LoginComponent,
     JournalComponent,
     MusiqueComponent,
-    ArticlesEditorComponent,
+    JournalEditorComponent,
+    ArticleEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -41,11 +47,16 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatIconModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatTooltipModule,
     NgbModule,
     CKEditorModule
   ],
   providers: [
-    AuthService, 
+    AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
