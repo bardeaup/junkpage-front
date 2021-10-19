@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JournalEdition } from 'src/app/models/journal-edition';
+import { ListeValeurs } from 'src/app/models/liste-valeurs';
+import { Valeur } from 'src/app/models/valeur';
 import { JournalService } from 'src/app/service/journal.service';
 import { ListeValeursService } from 'src/app/service/liste-valeurs.service';
 import * as Editor from '../../../../ckeditor5-custom-light/build/ckeditor';
@@ -21,6 +23,8 @@ export class ArticleEditorComponent implements OnInit {
   };
   actualJournalEdition: JournalEdition;
   articleEditionForm: FormGroup;
+  rubriques: ListeValeurs;
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, 
     private journalService: JournalService, private listeValeursService: ListeValeursService) { }
 
@@ -29,9 +33,7 @@ export class ArticleEditorComponent implements OnInit {
       j => {
         this.actualJournalEdition = new JournalEdition(j.id,j.titre,j.annee,j.mois,j.numeroEdition,j.dateEdition)}
     );
-    this.listeValeursService.getListeValeurs("RUBRIQUES").subscribe(
-      listeValeurs => console.log("LISTE :", listeValeurs)
-    );
+    this.setListeValeurs("RUBRIQUES");
     this.articleEditionForm = this.fb.group({
       categorie:'',
       redacteur:'',
@@ -41,6 +43,19 @@ export class ArticleEditorComponent implements OnInit {
       titreArticle:'',
       contenuArticle:''
     })
+  }
+  
+  setListeValeurs(codeListevaleurs: string) {
+    this.listeValeursService.getListeValeurs(codeListevaleurs).subscribe(
+      listeValeurs => {
+        let listeRubriques: Valeur[] = [];
+        for(let valeur of listeValeurs.listeValeurs) {
+          listeRubriques.push(new Valeur(valeur.codeValeur, valeur.libelleValeur));
+        }
+        this.rubriques = new ListeValeurs(listeValeurs.codeListeValeurs, 
+          listeValeurs.libelleListeValeurs, listeRubriques);
+        }
+    );
   }
   
   save() {

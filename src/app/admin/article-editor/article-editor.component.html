@@ -1,7 +1,7 @@
 <div class="container-global">
   <div class="form-container">
     <div class="d-flex subheader pt-2">
-      <button mat-icon-button matTooltip="Retour" routerLink="/edit-journal/{{actualJournalEdition.annee}}" class="ms-2">
+      <button mat-icon-button matTooltip="Retour" routerLink="/edit-journal/{{actualJournalEdition?.annee}}" class="ms-2">
         <mat-icon>
           arrow_back
         </mat-icon>
@@ -11,7 +11,7 @@
     <div class="container-fluid h-100 p-3">
       <div class="row justify-content-center h-100">
         <div class="col">
-          <h2>Articles de l'édition de {{actualJournalEdition.mois | titlecase}} {{actualJournalEdition.annee}}</h2>
+          <h2>Articles de l'édition de {{actualJournalEdition?.mois | titlecase}} {{actualJournalEdition?.annee}}</h2>
 
         </div>
         <form class="col border-left-separator" [formGroup]="articleEditionForm">
@@ -19,11 +19,8 @@
           <div class="row">
             <div class="col">
               <label class="form-label">Catégorie</label>
-              <select class="form-select" aria-label="Default select example" formControlName="categorie">
-                <option value="Fête de la citrouille">Fête de la citrouille</option>
-                <option value="Danse">Danse</option>
-                <option value="Musique">Musique</option>
-                <option value="Cirque">Cirque</option>
+              <select class="form-select" aria-label="Default select example" formControlName="categorie" >
+                <option *ngFor="let rubrique of rubriques?.valeurs" value="rubrique.codeValeur">{{rubrique.libelleValeur}}</option>
               </select>
             </div>
 
