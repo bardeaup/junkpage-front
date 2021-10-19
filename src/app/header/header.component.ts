@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
-import { finalize } from 'rxjs/operators';
+import * as moment from 'moment';
+
 
 
 @Component({
@@ -11,6 +10,11 @@ import { finalize } from 'rxjs/operators';
 })
 export class HeaderComponent {
 
+  anneeActuelle: number;
   constructor() { }
+
+  ngOnInit() {
+    this.anneeActuelle  = moment().year();
+  }
 
 }

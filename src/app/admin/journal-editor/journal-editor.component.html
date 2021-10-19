@@ -6,7 +6,7 @@
                 <div class="col">
                     <h2>Modifier une édition existante</h2>
                     <mat-accordion>
-                        <mat-expansion-panel *ngFor="let journalEditionAnnuel of journalEditionHistorique">
+                        <mat-expansion-panel [expanded]="anneeEditionOuverte == journalEditionAnnuel.annee" *ngFor="let journalEditionAnnuel of journalEditionHistorique">
                           <mat-expansion-panel-header>
                             <mat-panel-title>
                                 {{ journalEditionAnnuel.annee }}

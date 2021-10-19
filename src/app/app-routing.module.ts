@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'junkadminpage', component: LoginComponent},
   {path: 'journal', component: JournalComponent},
   {path: 'musique', component: MusiqueComponent},
-  {path: 'edit-journal', component: JournalEditorComponent},
+  {path: 'edit-journal/:annee', component: JournalEditorComponent},
   {path: 'edit-article/:id', component: ArticleEditorComponent}
 
 ];

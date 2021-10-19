@@ -26,7 +26,6 @@ export class JournalService {
   }
 
   getJournalEditionById(idEdition: string): Observable<any> {
-    console.log('ALLOO');
     return this.http.get(JOURNAL_API + 'journal-edition/'+idEdition);
   }
 

@@ -1,7 +1,7 @@
 <div class="container-global">
   <div class="form-container">
     <div class="d-flex subheader pt-2">
-      <button mat-icon-button matTooltip="Retour" routerLink="/edit-journal" class="ms-2">
+      <button mat-icon-button matTooltip="Retour" routerLink="/edit-journal/{{actualJournalEdition.annee}}" class="ms-2">
         <mat-icon>
           arrow_back
         </mat-icon>
@@ -14,12 +14,12 @@
           <h2>Articles de l'édition de {{actualJournalEdition.mois | titlecase}} {{actualJournalEdition.annee}}</h2>
 
         </div>
-        <form class="col border-left-separator">
+        <form class="col border-left-separator" [formGroup]="articleEditionForm">
           <h2>Créer un nouvel article</h2>
           <div class="row">
             <div class="col">
               <label class="form-label">Catégorie</label>
-              <select class="form-select" aria-label="Default select example">
+              <select class="form-select" aria-label="Default select example" formControlName="categorie">
                 <option value="Fête de la citrouille">Fête de la citrouille</option>
                 <option value="Danse">Danse</option>
                 <option value="Musique">Musique</option>
@@ -31,7 +31,7 @@
                                       ajouter Copyright et libellé desccriptif de l'image-->
             <div class="col mb-3">
               <label class="form-label">Rédacteur</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="redacteur">
             </div>
           </div>
           <hr class="separateur">
@@ -39,7 +39,7 @@
             <label class="form-label">Image prinicipale</label>
             <div class="input-group">
               <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputFile"
-                aria-label="Upload">
+                aria-label="Upload" formControlName="imagePrincipale">
               <button class="btn btn-outline-secondary" type="button" id="inputFile">Supprimer</button>
             </div>
           </div>
@@ -47,21 +47,21 @@
 
           <div class="mb-3">
             <label class="form-label">Titre du chapeau</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="titreChapeau">
           </div>
           <div class="mb-3">
             <label class="form-label">Contenu du chapeau</label>
-            <textarea type="text" class="form-control" rows="3"></textarea>
+            <textarea type="text" class="form-control" rows="3" formControlName="contenuChapeau"></textarea>
           </div>
           <hr class="separateur">
 
           <div class="mb-3">
             <label class="form-label">Titre de l'article</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp">
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="titreArticle">
           </div>
           <div class="mb-3">
             <label class="form-label">Contenu de l'article</label>
-            <ckeditor class="mb-3" [config]="config" [editor]="Editor" data="<p>Hello, world!</p>">
+            <ckeditor class="mb-3" [config]="config" [editor]="Editor" formControlName="contenuArticle">
             </ckeditor>
           </div>
         </form>

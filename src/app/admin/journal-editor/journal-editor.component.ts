@@ -9,7 +9,7 @@ import { JournalEdition } from 'src/app/models/journal-edition';
 import { SnackbarService } from 'src/app/service/snackbar.service';
 import { JournalService } from 'src/app/service/journal.service';
 import { HistoriqueEditionParAn } from 'src/app/models/historique-editions-par-an';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-journal-editor',
@@ -28,10 +28,11 @@ export class JournalEditorComponent implements OnInit {
   monthsList: string[];
   years: number[] = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027];
   actualJournalEdition: JournalEdition;
+  anneeEditionOuverte: string;
 
   constructor(private fb: FormBuilder, private modalService: NgbModal,
     private journalEditorService: JournalEditorService, private snackBarService: SnackbarService,
-    private journalService: JournalService, private router: Router) { }
+    private journalService: JournalService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getHistorique();
@@ -42,6 +43,7 @@ export class JournalEditorComponent implements OnInit {
       annee: [moment().year()],
       numeroEdition: '',
     });
+    this.anneeEditionOuverte = this.route.snapshot.paramMap.get('id');
   }
 
   getHistorique(){
